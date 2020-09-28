@@ -1,6 +1,8 @@
 <script>
 	import Table from './Table.svelte';
 	import Form from './Form.svelte';
+
+	import { newItem } from './store';
 </script>
 <style>
 	main {
@@ -17,6 +19,6 @@
 
 <main>
 	<h1>Project estimator</h1>
-	<Form />
+	<Form {newItem}/>
 	<Table />
 </main>
