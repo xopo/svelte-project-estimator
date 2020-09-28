@@ -1,11 +1,14 @@
 <script>
+    import materials from './store';
+ 
     export let id;
     export let name;
     export let price;
-
+ 
     $: mode = id ? 'Edit' : 'Add';
      
     const submit = () => {
+        materials.add(name, price);
         reset();
     }
 
@@ -52,7 +55,7 @@
     <button 
         type="submit"  
         class='float-right'
-        disabled={!name.trim().length || !price}
+        disabled={!name || !name.trim().length || !price}
     >
         {mode}
     </button>

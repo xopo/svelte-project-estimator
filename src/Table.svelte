@@ -1,9 +1,12 @@
 <script>
-    
-    let items = [];
-    export function addItem(item) {
-        items.push(item);
-    }
+    import { onDestroy } from 'svelte';
+	import materials from './store';
+	
+	let items = [];
+	const unsubscribe = materials.subscribe(val => {
+		items = [...val];
+	})
+    onDestroy(() => unsubscribe);
 </script>
 <main>
     <table>
@@ -15,7 +18,13 @@
             </tr>
         </thead>
         <tbody>
-
+            {#each items as {id, name, price}, i (id)}
+                <tr>
+                    <td>{id}</td>
+                    <td>{name}</td>
+                    <td>{price}</td>
+                </tr>
+            {/each}
         </tbody>
         <tfoot>
             <tr>
