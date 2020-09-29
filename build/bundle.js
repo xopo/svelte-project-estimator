@@ -778,28 +778,21 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	let h1;
-    	let t0;
-    	let t1;
-    	let t2;
-    	let t3;
-    	let t4;
-    	let t5;
     	let form;
     	let fieldset0;
     	let label0;
-    	let t7;
+    	let t1;
     	let input0;
-    	let t8;
+    	let t2;
     	let fieldset1;
     	let label1;
-    	let t10;
+    	let t4;
     	let input1;
-    	let t11;
-    	let t12;
+    	let t5;
+    	let t6;
     	let fieldset2;
     	let button;
-    	let t13;
+    	let t7;
     	let button_disabled_value;
     	let mounted;
     	let dispose;
@@ -807,31 +800,24 @@ var app = (function () {
 
     	return {
     		c() {
-    			h1 = element("h1");
-    			t0 = text(/*mode*/ ctx[2]);
-    			t1 = text(" - ");
-    			t2 = text(/*price*/ ctx[1]);
-    			t3 = text(" - ");
-    			t4 = text(/*name*/ ctx[0]);
-    			t5 = space();
     			form = element("form");
     			fieldset0 = element("fieldset");
     			label0 = element("label");
     			label0.textContent = "Material";
-    			t7 = space();
+    			t1 = space();
     			input0 = element("input");
-    			t8 = space();
+    			t2 = space();
     			fieldset1 = element("fieldset");
     			label1 = element("label");
     			label1.textContent = "Price";
-    			t10 = space();
+    			t4 = space();
     			input1 = element("input");
-    			t11 = space();
+    			t5 = space();
     			if (if_block) if_block.c();
-    			t12 = space();
+    			t6 = space();
     			fieldset2 = element("fieldset");
     			button = element("button");
-    			t13 = text(/*mode*/ ctx[2]);
+    			t7 = text(/*mode*/ ctx[2]);
     			attr(label0, "for", "material");
     			attr(input0, "type", "text");
     			attr(input0, "name", "material");
@@ -849,31 +835,24 @@ var app = (function () {
     			button.disabled = button_disabled_value = !/*name*/ ctx[0] || !/*name*/ ctx[0].trim().length || !/*price*/ ctx[1];
     		},
     		m(target, anchor) {
-    			insert(target, h1, anchor);
-    			append(h1, t0);
-    			append(h1, t1);
-    			append(h1, t2);
-    			append(h1, t3);
-    			append(h1, t4);
-    			insert(target, t5, anchor);
     			insert(target, form, anchor);
     			append(form, fieldset0);
     			append(fieldset0, label0);
-    			append(fieldset0, t7);
+    			append(fieldset0, t1);
     			append(fieldset0, input0);
     			set_input_value(input0, /*name*/ ctx[0]);
-    			append(form, t8);
+    			append(form, t2);
     			append(form, fieldset1);
     			append(fieldset1, label1);
-    			append(fieldset1, t10);
+    			append(fieldset1, t4);
     			append(fieldset1, input1);
     			set_input_value(input1, /*price*/ ctx[1]);
-    			append(form, t11);
+    			append(form, t5);
     			if (if_block) if_block.m(form, null);
-    			append(form, t12);
+    			append(form, t6);
     			append(form, fieldset2);
     			append(fieldset2, button);
-    			append(button, t13);
+    			append(button, t7);
 
     			if (!mounted) {
     				dispose = [
@@ -886,10 +865,6 @@ var app = (function () {
     			}
     		},
     		p(ctx, [dirty]) {
-    			if (dirty & /*mode*/ 4) set_data(t0, /*mode*/ ctx[2]);
-    			if (dirty & /*price*/ 2) set_data(t2, /*price*/ ctx[1]);
-    			if (dirty & /*name*/ 1) set_data(t4, /*name*/ ctx[0]);
-
     			if (dirty & /*name*/ 1 && input0.value !== /*name*/ ctx[0]) {
     				set_input_value(input0, /*name*/ ctx[0]);
     			}
@@ -904,14 +879,14 @@ var app = (function () {
     				} else {
     					if_block = create_if_block$1(ctx);
     					if_block.c();
-    					if_block.m(form, t12);
+    					if_block.m(form, t6);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty & /*mode*/ 4) set_data(t13, /*mode*/ ctx[2]);
+    			if (dirty & /*mode*/ 4) set_data(t7, /*mode*/ ctx[2]);
 
     			if (dirty & /*name, price*/ 3 && button_disabled_value !== (button_disabled_value = !/*name*/ ctx[0] || !/*name*/ ctx[0].trim().length || !/*price*/ ctx[1])) {
     				button.disabled = button_disabled_value;
@@ -920,8 +895,6 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d(detaching) {
-    			if (detaching) detach(h1);
-    			if (detaching) detach(t5);
     			if (detaching) detach(form);
     			if (if_block) if_block.d();
     			mounted = false;
