@@ -33,7 +33,6 @@
     onDestroy(() => unsubscribe);
 </script>
 
-<h1>{mode} - {price} - {name}</h1>
 <form on:submit={submit}>
     <fieldset>
         <label for="material">Material</label>
