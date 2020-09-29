@@ -1,4 +1,6 @@
 <script>
+    import { onDestroy } from 'svelte';
+
     import materials from './store';
  
     export let id;
@@ -8,7 +10,7 @@
     $: mode = id ? 'Edit' : 'Add';
      
     const submit = () => {
-        materials.add(name, price);
+        materials.update(name, price, id);
         reset();
     }
 
@@ -17,9 +19,22 @@
         name = '';
         price = undefined;
     }
+
+//     let items = [];
+
+    const unsubscribe = materials.subscribe(items => {
+        const editItem = items.find(i => i.edit === true);
+        
+        if (editItem) {
+           ({ id, name, price } = editItem);
+        }
+    });
+
+    onDestroy(() => unsubscribe);
 </script>
+
 <h1>{mode} - {price} - {name}</h1>
-<form on:submit|preventDefault={submit}>
+<form on:submit={submit}>
     <fieldset>
         <label for="material">Material</label>
         <input 
@@ -52,13 +67,15 @@
             Cancel
         </button>
     {/if}
-    <button 
-        type="submit"  
-        class='float-right'
-        disabled={!name || !name.trim().length || !price}
-    >
-        {mode}
-    </button>
+    <fieldset>
+        <button 
+            type="submit"  
+            class='float-right'
+            disabled={!name || !name.trim().length || !price}
+        >
+            {mode}
+        </button>
+    </fieldset>
 </form>
 
 <style>
